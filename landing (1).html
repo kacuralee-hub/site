@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Маркетолог для строительного бизнеса</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geologica:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0d0d0d;
+    --white: #f5f0e8;
+    --accent: #c8a84b;
+    --accent-dark: #8b6f2e;
+    --gray: #2a2a2a;
+    --gray-mid: #444;
+    --gray-light: #888;
+    --border: rgba(200, 168, 75, 0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Geologica', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 60px;
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--accent);
+  }
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--accent);
+    padding: 10px 28px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #d9b85c; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      linear-gradient(160deg, rgba(200,168,75,0.06) 0%, transparent 50%),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 79px,
+        rgba(200,168,75,0.04) 79px,
+        rgba(200,168,75,0.04) 80px
+      );
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--black) 0%, transparent 60%);
+  }
+  .hero-tag {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 9vw, 130px);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    position: relative;
+    max-width: 900px;
+    margin-bottom: 40px;
+  }
+  .hero-headline span {
+    color: var(--accent);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: #aaa;
+    max-width: 520px;
+    position: relative;
+    margin-bottom: 52px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+  }
+  .btn-primary {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--accent);
+    padding: 18px 44px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #d9b85c; transform: translateY(-1px); }
+  .btn-secondary {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+  }
+  .btn-secondary:hover { gap: 14px; }
+  .hero-stats {
+    position: absolute;
+    right: 60px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    text-align: right;
+  }
+  .hero-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-top: 4px;
+  }
+
+  /* SECTION SHARED */
+  section { padding: 100px 60px; }
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 60px;
+  }
+
+  /* SERVICES */
+  .services { background: #0a0a0a; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .service-card {
+    background: #0a0a0a;
+    padding: 48px 40px;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .service-card:hover { background: var(--gray); }
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: rgba(200,168,75,0.12);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .service-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+  .service-desc {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.7;
+  }
+
+  /* METRICS */
+  .metrics { background: var(--black); }
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 80px;
+  }
+  .metric-block {
+    background: var(--black);
+    padding: 52px 40px;
+    text-align: center;
+  }
+  .metric-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+  .metric-desc {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #666;
+    margin-top: 8px;
+  }
+
+  /* APPROACH */
+  .approach-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .approach-text {
+    font-size: 16px;
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .approach-highlight {
+    border-left: 2px solid var(--accent);
+    padding: 20px 28px;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.5;
+    margin: 32px 0;
+  }
+  .channels-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .channel-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border: 0.5px solid var(--border);
+    font-size: 14px;
+    color: #aaa;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .channel-item:hover { border-color: var(--accent); color: var(--white); }
+  .channel-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* FIT */
+  .fit { background: #0a0a0a; }
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .fit-card {
+    padding: 36px 32px;
+    border: 0.5px solid var(--border);
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .fit-card:hover { border-color: var(--accent); }
+  .fit-card::before {
+    content: '✓';
+    position: absolute;
+    top: 32px; right: 32px;
+    color: var(--accent);
+    font-size: 18px;
+  }
+  .fit-card p { font-size: 15px; color: #999; line-height: 1.7; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--accent);
+    padding: 100px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+  }
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 72px);
+    color: var(--black);
+    line-height: 1;
+    max-width: 600px;
+  }
+  .cta-right {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+  }
+  .cta-note {
+    font-size: 13px;
+    color: rgba(13,13,13,0.55);
+    text-align: right;
+    max-width: 220px;
+    line-height: 1.6;
+  }
+  .btn-dark {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--black);
+    padding: 18px 44px;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-dark:hover { background: #1a1a1a; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 0.5px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p { font-size: 13px; color: #555; }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: var(--accent);
+  }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    section, .hero, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .hero-stats { display: none; }
+    .approach-content { grid-template-columns: 1fr; gap: 40px; }
+    .metrics-row { grid-template-columns: 1fr; }
+    .cta-section { flex-direction: column; align-items: flex-start; }
+    .cta-right { align-items: flex-start; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">СТРОЙ·МАРКЕТ</div>
+  <a href="#contact" class="nav-cta">Обсудить проект</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Маркетинг для строительного бизнеса</div>
+  <h1 class="hero-headline">
+    Делаю вашу<br>
+    компанию<br>
+    <span>лидером рынка</span>
+  </h1>
+  <p class="hero-sub">
+    Каждый вложенный рубль в маркетинг конвертируется в реальные продажи. 
+    10+ лет опыта в строительных нишах — от ИЖС до коммерческой недвижимости.
+  </p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Начать сотрудничество →</a>
+    <a href="#services" class="btn-secondary">Что я делаю ↓</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">10+</div>
+      <div class="hero-stat-label">Лет в отрасли</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">4М₽</div>
+      <div class="hero-stat-label">Бюджет в управлении</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">10</div>
+      <div class="hero-stat-label">Каналов трафика</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-tag">Что я делаю</div>
+  <h2 class="section-title">5 направлений<br>роста</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-title">Трафик и аналитика</div>
+      <p class="service-desc">Настрою ~10 каналов трафика — каждый отслеживаемый и управляемый. Цена лида, ROMI, полная аналитика. Будем точно знать, что приносит деньги.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-title">Продажи и CRM</div>
+      <p class="service-desc">Выстроим конверсионный порядок продаж в CRM. Работаю в связке с РОП или помогаю построить отдел продаж с нуля, если его ещё нет.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-title">Узнаваемость бренда</div>
+      <p class="service-desc">Системная работа над узнаваемостью — контент, экспертные публикации в СМИ, присутствие в офлайне и соцсетях.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <div class="service-title">Лояльность и сервис</div>
+      <p class="service-desc">Повышаем качество сервиса и лояльность к бренду. Цель — максимизировать поток рекомендаций от существующих клиентов.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">05</div>
+      <div class="service-title">Упаковка и цены</div>
+      <p class="service-desc">Работаем над ценообразованием и упаковкой продукта. Правильное позиционирование увеличивает конверсию без роста бюджета.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics">
+  <div class="section-tag">Результаты</div>
+  <h2 class="section-title">Цифры говорят<br>сами за себя</h2>
+  <div class="metrics-row">
+    <div class="metric-block reveal">
+      <span class="metric-num">80×</span>
+      <div class="metric-desc">Рост рекламного бюджета — с 50 тыс до 4 млн руб/мес</div>
+    </div>
+    <div class="metric-block reveal">
+      <span class="metric-num">1–5%</span>
+      <div class="metric-desc">Доля маркетинга от выручки для уверенного роста</div>
+    </div>
+    <div class="metric-block reveal">
+      <span class="metric-num">10</span>
+      <div class="metric-desc">Каналов трафика — управляемых и измеримых одновременно</div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section style="background: #0a0a0a; padding: 100px 60px;">
+  <div class="section-tag">Инструменты</div>
+  <h2 class="section-title">Полный арсенал<br>каналов</h2>
+  <div class="approach-content">
+    <div>
+      <div class="approach-highlight reveal">
+        Умею самостоятельно работать с бюджетом 4 млн/мес — без команды. И могу руководить отделом из узких специалистов.
+      </div>
+      <p class="approach-text reveal">
+        За 10+ лет в строительных нишах я изучил специфику каждого канала изнутри. Не просто настраиваю — выстраиваю систему, где каждый рубль оставляет след в аналитике и конвертируется в продажи.
+      </p>
+      <p class="approach-text reveal">
+        Из опыта: в условиях текущего кризиса рынок ИЖС продолжает расти для тех, кто системно работает с маркетингом. Всего 1–5% выручки, вложенных правильно, дают кратный результат.
+      </p>
+    </div>
+    <div>
+      <div class="channels-list">
+        <div class="channel-item reveal"><span class="channel-dot"></span>Яндекс Директ</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>Авито</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>Авито ADS</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>Telegram / Макс</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>Офлайн реклама</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>Выставки</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>Контент и соцсети</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>Публикации в СМИ</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>POS материалы</div>
+        <div class="channel-item reveal"><span class="channel-dot"></span>Конверсия менеджеров</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section class="fit">
+  <div class="section-tag">Кому подойду</div>
+  <h2 class="section-title">Вы мой клиент,<br>если...</h2>
+  <div class="fit-grid">
+    <div class="fit-card reveal">
+      <p>Умеете выстраивать отношения с исполнителями строительных работ — и понимаете, что проблема именно в маркетинге</p>
+    </div>
+    <div class="fit-card reveal">
+      <p>Понимаете: каждый клиент стоит денег и без продвижения очередь из заявок сама не выстроится</p>
+    </div>
+    <div class="fit-card reveal">
+      <p>Готовы тестировать гипотезы и понимаете, что часть из них не сработает — это нормальная часть роста</p>
+    </div>
+    <div class="fit-card reveal">
+      <p>Видите, что рынок ИЖС огромен — и хотите занять в нём значительно большую долю</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <div class="cta-title reveal">Готовы стать лидером в своей нише?</div>
+  <div class="cta-right reveal">
+    <p class="cta-note">Обсудим вашу ситуацию и составим план роста без обязательств</p>
+    <a href="https://t.me/" class="btn-dark">Написать в Telegram →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">СТРОЙ·МАРКЕТ</div>
+  <p>© 2025 — Маркетинг для строительных компаний</p>
+  <p style="color: #444;">Опыт 10+ лет · Бюджеты до 4 млн/мес</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, (entry.target.dataset.delay || 0));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.dataset.delay = (i % 4) * 80;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
